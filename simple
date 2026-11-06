@@ -4,3 +4,42 @@ git commit -m "Initial commit"
 git branch -M main
 git remote add origin <your-github-repo-url>
 git push -u origin main
+
+6)dockerc
+docker --version
+docker pull hello-world
+docker images
+docker run hello-world
+docker ps
+docker ps -a
+docker rm container_id
+docker rmi hello-world
+
+7)da:Open VS Code.
+Create a folder named DockerDemo.
+Create index.html inside it.
+Create Dockerfile inside the same folder.
+Open the VS Code terminal.
+Run:docker build -t myapp .
+docker run -d -p 8080:80 --name mycontainer myapp
+
+
+
+8)explore--->>
+kubectl version --client
+kubectl cluster-info
+kubectl get nodes
+kubectl port-forward deployment/myapp 8080:80
+
+9)application of k
+docker&enable k
+in cmd in d
+check kubernetes:
+kubectl getnodes
+kubectl create deployment myapp --image=nginx
+kubectl get pods
+kubectl expose deployment myapp --port=80 --type=NodePort
+kubectl get services
+kubectl port-forward deployment/myapp 8080:80
+
+
