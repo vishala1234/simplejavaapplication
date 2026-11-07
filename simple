@@ -5,6 +5,65 @@ git branch -M main
 git remote add origin <your-github-repo-url>
 git push -u origin main
 
+1)registarion:
+application.java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RegistrationApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RegistrationApplication.class, args);
+    }
+}
+
+controller.java:
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+public class RegistrationController {
+
+    @GetMapping("/register")
+    public String register(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String event) {
+
+        return name + " registered successfully for " + event;
+    }
+}
+
+
+12:springboot:
+hellocontroller.java
+package com.example.wh1a05p5_experiment12.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/")
+    public String hello() {
+        System.out.println("Hello SpringBoot - Experiment 12");
+        return "Hello SpringBoot - Experiment 12";
+    }
+}
+app.java
+package com.example.wh1a05p5_experiment12;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+
 6)dockerc
 docker --version
 docker pull hello-world
@@ -22,7 +81,9 @@ Create Dockerfile inside the same folder.
 Open the VS Code terminal.
 Run:docker build -t myapp .
 docker run -d -p 8080:80 --name mycontainer myapp
-
+dockerfile:FROM nginx
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
 
 
 8)explore--->>
@@ -41,5 +102,115 @@ kubectl get pods
 kubectl expose deployment myapp --port=80 --type=NodePort
 kubectl get services
 kubectl port-forward deployment/myapp 8080:80
+
+Jenkins Installation and Setup – Explore the Environment
+Aim
+To install and configure Jenkins and explore its environment.
+Description
+Jenkins is an automation tool used in DevOps. It helps to automate the process of building, testing, and deploying software.
+Jenkins Setup Steps
+1. Install Jenkins
+Download and install Jenkins on the system.
+2. Start Jenkins
+Start the Jenkins service after installation.
+3. Open Jenkins in Browser
+Open:
+http://localhost:8080
+4. Unlock Jenkins
+Enter the initial administrator password.
+5. Install Plugins
+Select Install Suggested Plugins.
+6. Create Admin User
+Create a username and password and complete the setup.
+Setup Diagram
++------------------+
+| Install Jenkins  |
++--------+---------+
+         |
+         v
++------------------+
+| Start Jenkins    |
++--------+---------+
+         |
+         v
++------------------+
+| Open localhost   |
+|     :8080        |
++--------+---------+
+         |
+         v
++------------------+
+| Unlock Jenkins   |
++--------+---------+
+         |
+         v
++------------------+
+| Install Plugins  |
++--------+---------+
+         |
+         v
++------------------+
+| Create Admin     |
++--------+---------+
+         |
+         v
++------------------+
+| Jenkins Dashboard|
++------------------+
+Exploring Jenkins Environment
+After setup, the Jenkins Dashboard contains the following options:
+              +-------------------+
+              | JENKINS DASHBOARD |
+              +---------+---------+
+                        |
+       +----------------+----------------+
+       |                |                |
+       v                v                v
+   New Item       Build History    Manage Jenkins
+   Create Job     View Builds      Settings & Plugins
+New Item: Used to create a new project or job.
+Build History: Shows the status of previous builds.
+Manage Jenkins: Used to configure Jenkins and manage plugins.
+Result
+Thus, Jenkins was successfully installed and configured, and its environment was explored
+
+
+
+Experiment: Jenkins Installation and Setup – Explore the Environment
+Aim
+To install Jenkins, set up the Jenkins environment, and create a simple build job.
+Requirements
+Hardware:
+RAM: 4 GB
+Hard disk: More than 50 GB
+Software:
+JDK or JRE
+Web Browser
+Ubuntu Operating System
+RECORD 27 dev (1).pdf
+Procedure
+Step 1: Install Jenkins
+Add the Jenkins repository and update the system.
+sudo apt update
+sudo apt install jenkins
+Step 2: Start Jenkins
+Start the Jenkins server using:
+sudo systemctl start jenkins
+Check the status:
+sudo systemctl status jenkins
+Step 3: Open Jenkins
+Open the browser and enter:
+http://your_server_ip_or_domain:8080
+Jenkins opens on its default port 8080. RECORD 27 dev (1).pdf
+Step 4: Unlock Jenkins
+Get the initial administrator password using:
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Copy the password and paste it into the Jenkins setup page.
+Step 5: Complete Setup
+Click Install Suggested Plugins.
+Create the first admin user.
+Confirm the server address.
+Click Save and Finish.
+Click Start using Jenkins.
 
 
