@@ -63,6 +63,9 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
+terminal:
+.\mvnw.cmd spring-boot:run
+mvn spring-boot:run
 
 6)dockerc
 docker --version
