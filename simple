@@ -74,16 +74,31 @@ docker ps -a
 docker rm container_id
 docker rmi hello-world
 
-7)da:Open VS Code.
-Create a folder named DockerDemo.
-Create index.html inside it.
-Create Dockerfile inside the same folder.
-Open the VS Code terminal.
-Run:docker build -t myapp .
-docker run -d -p 8080:80 --name mycontainer myapp
-dockerfile:FROM nginx
-COPY index.html /usr/share/nginx/html/index.html
-EXPOSE 80
+da:contoller.java:
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/")
+    public String hello() {
+        return "Hello SpringBoot";
+    }
+}
+dockerfile:
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY target/*.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+terminal:
+ mvn clean package
+ docker build -t myapp .
+ docker run -p 8082:8082 myapp
 
 
 8)explore--->>
@@ -192,6 +207,7 @@ Procedure
 Step 1: Install Jenkins
 Add the Jenkins repository and update the system.
 sudo apt update
+
 sudo apt install jenkins
 Step 2: Start Jenkins
 Start the Jenkins server using:
